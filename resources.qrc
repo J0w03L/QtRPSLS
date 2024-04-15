@@ -3,5 +3,6 @@
         <file>assets/MainMenu/img/rpsls_diagram.svg</file>
         <file>assets/MainMenu/img/rpsls_diagram_transparent.svg</file>
         <file>assets/MainMenu/img/rpsls_diagram_transparent.png</file>
+        <file>assets/Game/snd/rpsls.wav</file>
     </qresource>
 </RCC>

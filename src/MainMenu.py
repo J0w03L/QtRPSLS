@@ -3,7 +3,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
-from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets, QtMultimedia
 from .ui.ui_MainMenu import Ui_MainMenu
 
 class MainMenu(QtWidgets.QMainWindow):
@@ -43,9 +43,16 @@ class MainMenu(QtWidgets.QMainWindow):
         self.ui.mainExitButton.clicked.connect(self.close)
         self.ui.mainAboutButton.clicked.connect(lambda _: self.change_menu_page(1))
         self.ui.aboutBackButton.clicked.connect(lambda _: self.change_menu_page(0))
+        self.ui.mainGuideButton.clicked.connect(lambda _: self.play_sound(":/assets/Game/snd/rpsls.wav"))
 
     def change_menu_page(self, index: int):
         self.ui.widgets.setCurrentIndex(index)
+
+    def play_sound(self, path: str, vol: float = 1.0):
+        self.sound = QtMultimedia.QSoundEffect()
+        self.sound.setSource(QtCore.QUrl.fromLocalFile(path))
+        self.sound.setVolume(vol)
+        self.sound.play()
 
     def resize_menu(self, width: int, height: int):
         logger.debug(f"Resizing menu to [{width}, {height}].")
