@@ -165,7 +165,7 @@ class Ui_MainMenu(object):
         self.aboutWidget.setObjectName(u"aboutWidget")
         self.verticalLayoutWidget_3 = QWidget(self.aboutWidget)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(0, 0, 632, 601))
+        self.verticalLayoutWidget_3.setGeometry(QRect(0, 0, 601, 591))
         self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -236,7 +236,7 @@ class Ui_MainMenu(object):
         self.guideWidget.setObjectName(u"guideWidget")
         self.verticalLayoutWidget_2 = QWidget(self.guideWidget)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 591, 591))
+        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 601, 591))
         self.verticalLayout_5 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -251,6 +251,182 @@ class Ui_MainMenu(object):
 
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_6.addItem(self.verticalSpacer_8)
+
+        self.aboutInfo_2 = QLabel(self.verticalLayoutWidget_2)
+        self.aboutInfo_2.setObjectName(u"aboutInfo_2")
+        self.aboutInfo_2.setMaximumSize(QSize(600, 16777215))
+        self.aboutInfo_2.setFont(font4)
+        self.aboutInfo_2.setStyleSheet(u"padding: .5em;background: none;")
+        self.aboutInfo_2.setScaledContents(False)
+        self.aboutInfo_2.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.aboutInfo_2.setWordWrap(True)
+        self.aboutInfo_2.setOpenExternalLinks(True)
+
+        self.verticalLayout_6.addWidget(self.aboutInfo_2)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_11)
+
+        self.guideRockIcon = QLabel(self.verticalLayoutWidget_2)
+        self.guideRockIcon.setObjectName(u"guideRockIcon")
+        self.guideRockIcon.setMinimumSize(QSize(64, 64))
+        self.guideRockIcon.setMaximumSize(QSize(64, 64))
+        self.guideRockIcon.setStyleSheet(u"image: url(:/assets/Game/img/rock.svg);\n"
+"background: none")
+        self.guideRockIcon.setMargin(0)
+        self.guideRockIcon.setIndent(-1)
+
+        self.horizontalLayout.addWidget(self.guideRockIcon)
+
+        self.guideRockText = QLabel(self.verticalLayoutWidget_2)
+        self.guideRockText.setObjectName(u"guideRockText")
+        self.guideRockText.setStyleSheet(u"background: none;")
+
+        self.horizontalLayout.addWidget(self.guideRockText)
+
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_7)
+
+        self.guidePaperText = QLabel(self.verticalLayoutWidget_2)
+        self.guidePaperText.setObjectName(u"guidePaperText")
+        self.guidePaperText.setStyleSheet(u"background: none;\n"
+"")
+        self.guidePaperText.setScaledContents(False)
+        self.guidePaperText.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.horizontalLayout.addWidget(self.guidePaperText)
+
+        self.guidePaperIcon = QLabel(self.verticalLayoutWidget_2)
+        self.guidePaperIcon.setObjectName(u"guidePaperIcon")
+        self.guidePaperIcon.setMinimumSize(QSize(64, 64))
+        self.guidePaperIcon.setMaximumSize(QSize(64, 64))
+        self.guidePaperIcon.setStyleSheet(u"image: url(:/assets/Game/img/paper.svg);\n"
+"background: none;")
+
+        self.horizontalLayout.addWidget(self.guidePaperIcon)
+
+        self.horizontalSpacer_12 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_12)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout)
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.guideScissorsIcon = QLabel(self.verticalLayoutWidget_2)
+        self.guideScissorsIcon.setObjectName(u"guideScissorsIcon")
+        self.guideScissorsIcon.setMinimumSize(QSize(64, 64))
+        self.guideScissorsIcon.setMaximumSize(QSize(64, 64))
+        self.guideScissorsIcon.setStyleSheet(u"image: url(:/assets/Game/img/scissors.svg);\n"
+"background: none;")
+        self.guideScissorsIcon.setMargin(0)
+        self.guideScissorsIcon.setIndent(-1)
+
+        self.horizontalLayout_5.addWidget(self.guideScissorsIcon)
+
+        self.guideScissorsText = QLabel(self.verticalLayoutWidget_2)
+        self.guideScissorsText.setObjectName(u"guideScissorsText")
+        self.guideScissorsText.setStyleSheet(u"background: none;")
+
+        self.horizontalLayout_5.addWidget(self.guideScissorsText)
+
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_8)
+
+        self.guideLizardText = QLabel(self.verticalLayoutWidget_2)
+        self.guideLizardText.setObjectName(u"guideLizardText")
+        self.guideLizardText.setStyleSheet(u"background: none;")
+
+        self.horizontalLayout_5.addWidget(self.guideLizardText)
+
+        self.guideLizardIcon = QLabel(self.verticalLayoutWidget_2)
+        self.guideLizardIcon.setObjectName(u"guideLizardIcon")
+        self.guideLizardIcon.setMinimumSize(QSize(64, 64))
+        self.guideLizardIcon.setMaximumSize(QSize(64, 64))
+        self.guideLizardIcon.setStyleSheet(u"image: url(:/assets/Game/img/lizard.svg);\n"
+"background: none;")
+
+        self.horizontalLayout_5.addWidget(self.guideLizardIcon)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_9)
+
+        self.guideSpockIcon = QLabel(self.verticalLayoutWidget_2)
+        self.guideSpockIcon.setObjectName(u"guideSpockIcon")
+        self.guideSpockIcon.setMinimumSize(QSize(64, 64))
+        self.guideSpockIcon.setMaximumSize(QSize(64, 64))
+        self.guideSpockIcon.setStyleSheet(u"image: url(:/assets/Game/img/spock.svg);\n"
+"background: none;")
+        self.guideSpockIcon.setMargin(0)
+        self.guideSpockIcon.setIndent(-1)
+
+        self.horizontalLayout_6.addWidget(self.guideSpockIcon)
+
+        self.guideSpockText = QLabel(self.verticalLayoutWidget_2)
+        self.guideSpockText.setObjectName(u"guideSpockText")
+        self.guideSpockText.setStyleSheet(u"background: none;")
+
+        self.horizontalLayout_6.addWidget(self.guideSpockText)
+
+        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_10)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_6)
+
+        self.aboutInfo_3 = QLabel(self.verticalLayoutWidget_2)
+        self.aboutInfo_3.setObjectName(u"aboutInfo_3")
+        self.aboutInfo_3.setMaximumSize(QSize(600, 16777215))
+        self.aboutInfo_3.setFont(font4)
+        self.aboutInfo_3.setStyleSheet(u"padding: .5em;background: none;")
+        self.aboutInfo_3.setScaledContents(False)
+        self.aboutInfo_3.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.aboutInfo_3.setWordWrap(True)
+        self.aboutInfo_3.setOpenExternalLinks(True)
+
+        self.verticalLayout_6.addWidget(self.aboutInfo_3)
+
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_6.addItem(self.verticalSpacer_9)
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_5)
+
+        self.guideBackButton = QPushButton(self.verticalLayoutWidget_2)
+        self.guideBackButton.setObjectName(u"guideBackButton")
+        self.guideBackButton.setMinimumSize(QSize(320, 0))
+        self.guideBackButton.setFont(font5)
+        self.guideBackButton.setStyleSheet(u"margin-bottom: 1.5em;")
+
+        self.horizontalLayout_4.addWidget(self.guideBackButton)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_6)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_4)
+
 
         self.verticalLayout_5.addLayout(self.verticalLayout_6)
 
@@ -261,7 +437,7 @@ class Ui_MainMenu(object):
 
         self.retranslateUi(MainMenu)
 
-        self.widgets.setCurrentIndex(0)
+        self.widgets.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainMenu)
@@ -282,5 +458,18 @@ class Ui_MainMenu(object):
                         "org/licenses/by-sa/3.0/deed.en\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">CC-BY-SA-3.0</span></a><span style=\" font-size:10pt;\"> by </span><a href=\"https://commons.wikimedia.org/wiki/User:DMacks\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">DMacks</span></a><span style=\" font-size:10pt;\">.</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://youtu.be/6s9k5rwBWB4?t=67\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">&quot;Rock Paper Scissors Lizard Spock&quot; callout audio</span></a><span style=\" font-size:10pt;\">, voice clip from &quot;The Big Bang Theory, Season 2 Episode 8: The Lizard-Spock Expansion&quot;</span></p></body></html>", None))
         self.aboutBackButton.setText(QCoreApplication.translate("MainMenu", u"Back to Main Menu", None))
         self.guideTitle.setText(QCoreApplication.translate("MainMenu", u"How to Play", None))
+        self.aboutInfo_2.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p>In RPSLS, there are 5 moves to chose from. Each move counters two and is countered by another two.</p></body></html>", None))
+        self.guideRockIcon.setText("")
+        self.guideRockText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Lizard</span>.<br/><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Scissors</span>.</p><p><span style=\" font-weight:700;\">Paper</span> covers <span style=\" font-weight:700;\">Rock</span>.<br/><span style=\" font-weight:700;\">Spock</span> vaporizes <span style=\" font-weight:700;\">Rock</span>.</p></body></html>", None))
+        self.guidePaperText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Paper</span> covers <span style=\" font-weight:700;\">Rock</span>.<br/><span style=\" font-weight:700;\">Paper</span> disproves <span style=\" font-weight:700;\">Spock</span>.</p><p><span style=\" font-weight:700;\">Scissors</span> cuts <span style=\" font-weight:700;\">Paper</span>.<br/><span style=\" font-weight:700;\">Lizard</span> eats <span style=\" font-weight:700;\">Paper</span>.</p></body></html>", None))
+        self.guidePaperIcon.setText("")
+        self.guideScissorsIcon.setText("")
+        self.guideScissorsText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Scissors</span> cuts <span style=\" font-weight:700;\">Paper</span>.<br/><span style=\" font-weight:700;\">Scissors</span> decapitates <span style=\" font-weight:700;\">Lizard</span>.</p><p><span style=\" font-weight:700;\">Spock</span> smashes <span style=\" font-weight:700;\">Scissors</span>.<br/><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Scissors</span>.</p></body></html>", None))
+        self.guideLizardText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Lizard</span> poisons <span style=\" font-weight:700;\">Spock</span>.<br/><span style=\" font-weight:700;\">Lizard</span> eats <span style=\" font-weight:700;\">Paper</span>.</p><p><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Lizard</span>.<br/><span style=\" font-weight:700;\">Scissors</span> decapitates <span style=\" font-weight:700;\">Lizard</span>.</p></body></html>", None))
+        self.guideLizardIcon.setText("")
+        self.guideSpockIcon.setText("")
+        self.guideSpockText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Spock</span> smashes <span style=\" font-weight:700;\">Scissors</span>.<br/><span style=\" font-weight:700;\">Spock</span> vaporizes <span style=\" font-weight:700;\">Rock</span>.</p><p><span style=\" font-weight:700;\">Lizard</span> poisons <span style=\" font-weight:700;\">Spock</span>.<br/><span style=\" font-weight:700;\">Paper</span> disproves <span style=\" font-weight:700;\">Spock</span>.</p></body></html>", None))
+        self.aboutInfo_3.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p>And as you might have guessed, two identical moves are a tie.</p><p>The winner is determined from a best-of-3 rounds (not including ties).</p></body></html>", None))
+        self.guideBackButton.setText(QCoreApplication.translate("MainMenu", u"Back to Main Menu", None))
     # retranslateUi
 

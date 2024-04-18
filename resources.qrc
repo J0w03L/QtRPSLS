@@ -4,5 +4,10 @@
         <file>assets/MainMenu/img/rpsls_diagram_transparent.svg</file>
         <file>assets/MainMenu/img/rpsls_diagram_transparent.png</file>
         <file>assets/Game/snd/rpsls.wav</file>
+        <file>assets/Game/img/spock.svg</file>
+        <file>assets/Game/img/scissors.svg</file>
+        <file>assets/Game/img/rock.svg</file>
+        <file>assets/Game/img/paper.svg</file>
+        <file>assets/Game/img/lizard.svg</file>
     </qresource>
 </RCC>

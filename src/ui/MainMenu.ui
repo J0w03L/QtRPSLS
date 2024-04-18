@@ -117,7 +117,7 @@
        <string notr="true">padding:.1em;</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="mainWidget">
        <widget class="QWidget" name="verticalLayoutWidget">
@@ -338,8 +338,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>632</width>
-          <height>601</height>
+          <width>601</width>
+          <height>591</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -495,7 +495,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>591</width>
+          <width>601</width>
           <height>591</height>
          </rect>
         </property>
@@ -527,7 +527,435 @@
           </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_6"/>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <spacer name="verticalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="aboutInfo_2">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">padding: .5em;background: none;</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In RPSLS, there are 5 moves to chose from. Each move counters two and is countered by another two.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignHCenter|Qt::AlignTop</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <spacer name="horizontalSpacer_11">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideRockIcon">
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">image: url(:/assets/Game/img/rock.svg);
+background: none</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <property name="indent">
+                <number>-1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideRockText">
+               <property name="styleSheet">
+                <string notr="true">background: none;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt; crushes &lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt; crushes &lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt; covers &lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt; vaporizes &lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="guidePaperText">
+               <property name="styleSheet">
+                <string notr="true">background: none;
+</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt; covers &lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt; disproves &lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt; cuts &lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt; eats &lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="scaledContents">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="guidePaperIcon">
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">image: url(:/assets/Game/img/paper.svg);
+background: none;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_12">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QLabel" name="guideScissorsIcon">
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">image: url(:/assets/Game/img/scissors.svg);
+background: none;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <property name="indent">
+                <number>-1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideScissorsText">
+               <property name="styleSheet">
+                <string notr="true">background: none;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt; cuts &lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt; decapitates &lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt; smashes &lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt; crushes &lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideLizardText">
+               <property name="styleSheet">
+                <string notr="true">background: none;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt; poisons &lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt; eats &lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt; crushes &lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt; decapitates &lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideLizardIcon">
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">image: url(:/assets/Game/img/lizard.svg);
+background: none;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <spacer name="horizontalSpacer_9">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideSpockIcon">
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">image: url(:/assets/Game/img/spock.svg);
+background: none;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <property name="indent">
+                <number>-1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="guideSpockText">
+               <property name="styleSheet">
+                <string notr="true">background: none;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt; smashes &lt;span style=&quot; font-weight:700;&quot;&gt;Scissors&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt; vaporizes &lt;span style=&quot; font-weight:700;&quot;&gt;Rock&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Lizard&lt;/span&gt; poisons &lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt;.&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Paper&lt;/span&gt; disproves &lt;span style=&quot; font-weight:700;&quot;&gt;Spock&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_10">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="aboutInfo_3">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">padding: .5em;background: none;</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;And as you might have guessed, two identical moves are a tie.&lt;/p&gt;&lt;p&gt;The winner is determined from a best-of-3 rounds (not including ties).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignHCenter|Qt::AlignTop</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="guideBackButton">
+               <property name="minimumSize">
+                <size>
+                 <width>320</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>18</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">margin-bottom: 1.5em;</string>
+               </property>
+               <property name="text">
+                <string>Back to Main Menu</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>

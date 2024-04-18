@@ -42,8 +42,10 @@ class MainMenu(QtWidgets.QMainWindow):
         # Hook button events.
         self.ui.mainExitButton.clicked.connect(self.close)
         self.ui.mainAboutButton.clicked.connect(lambda _: self.change_menu_page(1))
+        self.ui.mainGuideButton.clicked.connect(lambda _: self.change_menu_page(2))
         self.ui.aboutBackButton.clicked.connect(lambda _: self.change_menu_page(0))
-        self.ui.mainGuideButton.clicked.connect(lambda _: self.play_sound(":/assets/Game/snd/rpsls.wav"))
+        self.ui.guideBackButton.clicked.connect(lambda _: self.change_menu_page(0))
+        #self.ui.mainGuideButton.clicked.connect(lambda _: self.play_sound(":/assets/Game/snd/rpsls.wav"))
 
     def change_menu_page(self, index: int):
         self.ui.widgets.setCurrentIndex(index)
