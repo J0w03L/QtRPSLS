@@ -19,6 +19,10 @@ if __name__ == "__main__":
     logger.debug("Starting app...")
 
     app = QApplication(sys.argv)
+
+    # Explicit application styling so that colors are consistent cross-platform.
+    app.setStyle("fusion")
+
     widget = MainMenu()
     widget.show()
     ret = app.exec()
