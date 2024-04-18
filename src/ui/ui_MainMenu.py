@@ -232,13 +232,36 @@ class Ui_MainMenu(object):
         self.verticalLayout_3.addLayout(self.verticalLayout_4)
 
         self.widgets.addWidget(self.aboutWidget)
+        self.guideWidget = QWidget()
+        self.guideWidget.setObjectName(u"guideWidget")
+        self.verticalLayoutWidget_2 = QWidget(self.guideWidget)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 591, 591))
+        self.verticalLayout_5 = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.guideTitle = QLabel(self.verticalLayoutWidget_2)
+        self.guideTitle.setObjectName(u"guideTitle")
+        self.guideTitle.setMaximumSize(QSize(600, 64))
+        self.guideTitle.setFont(font1)
+        self.guideTitle.setStyleSheet(u"padding: .5em;")
+        self.guideTitle.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_5.addWidget(self.guideTitle)
+
+        self.verticalLayout_6 = QVBoxLayout()
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+
+        self.verticalLayout_5.addLayout(self.verticalLayout_6)
+
+        self.widgets.addWidget(self.guideWidget)
 
         self.gridLayout_3.addWidget(self.widgets, 0, 0, 1, 1)
 
 
         self.retranslateUi(MainMenu)
 
-        self.widgets.setCurrentIndex(1)
+        self.widgets.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainMenu)
@@ -255,8 +278,9 @@ class Ui_MainMenu(object):
         self.mainExitButton.setText(QCoreApplication.translate("MainMenu", u"Exit", None))
         self.aboutTitle.setText(QCoreApplication.translate("MainMenu", u"About", None))
         self.aboutInfo.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-size:16pt; font-weight:700; text-decoration: underline;\">Project</span></p><p><span style=\" font-size:10pt;\">QtRPSLS is a game that I wrote for one of my university assignments. Built using Python and Qt 6, this project follows Sam Kass's and Karen Bryla's twist on the classic &quot;Rock Paper Scissors&quot;, letting you play a game of &quot;Rock Paper Scissors Lizard Spock&quot; against the computer!</span></p><p><span style=\" font-size:10pt;\">Once that assignment has been submitted and graded, you may view the code online at </span><a href=\"https://github.com/J0w03L/QtRPSLS\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">this GitHub repository</span></a><span style=\" font-size:10pt;\">.</span></p><p><br/><span style=\" font-size:16pt; font-weight:700; text-decoration: underline;\">Credits</span></p><p><span style=\" font-size:10pt;\">This software was written by </span><a href=\"https://github.com/J0w03L\"><span style=\" font-size"
-                        ":10pt; text-decoration: underline; color:#0000ff;\">J0w03L</span></a><span style=\" font-size:10pt;\">, with the use of these open-source projects:</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://www.qt.io/product/development-tools\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">Qt Creator</span></a></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://www.python.org/\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">Python</span></a></p><p><span style=\" font-size:10pt;\">Additionally, this software contains some third-party media, for which attribution is given below:</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://en.wikipedia.org/wiki/File:Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">Moves diagram</span></a><span style=\" font-size:10pt;\">, licensed under </span><a href=\"https://creativecommons.org/li"
-                        "censes/by-sa/3.0/deed.en\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">CC-BY-SA-3.0</span></a><span style=\" font-size:10pt;\"> by </span><a href=\"https://commons.wikimedia.org/wiki/User:DMacks\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">DMacks</span></a><span style=\" font-size:10pt;\">.</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://youtu.be/6s9k5rwBWB4?t=67\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">&quot;Rock Paper Scissors Lizard Spock&quot; callout audio</span></a><span style=\" font-size:10pt;\">, voice clip from &quot;The Big Bang Theory, Season 2 Episode 8: The Lizard-Spock Expansion&quot;</span></p></body></html>", None))
+                        ":10pt; text-decoration: underline; color:#0000ff;\">J0w03L</span></a><span style=\" font-size:10pt;\">, with the use of these open-source projects:</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://www.qt.io/product/development-tools\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">Qt Creator</span></a></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://www.python.org/\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">Python</span></a></p><p><span style=\" font-size:10pt;\">Additionally, this software contains some third-party media, for which attribution is given below:</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://en.wikipedia.org/wiki/File:Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">Moves diagram/icons</span></a><span style=\" font-size:10pt;\">, licensed under </span><a href=\"https://creativecommons."
+                        "org/licenses/by-sa/3.0/deed.en\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">CC-BY-SA-3.0</span></a><span style=\" font-size:10pt;\"> by </span><a href=\"https://commons.wikimedia.org/wiki/User:DMacks\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">DMacks</span></a><span style=\" font-size:10pt;\">.</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://youtu.be/6s9k5rwBWB4?t=67\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">&quot;Rock Paper Scissors Lizard Spock&quot; callout audio</span></a><span style=\" font-size:10pt;\">, voice clip from &quot;The Big Bang Theory, Season 2 Episode 8: The Lizard-Spock Expansion&quot;</span></p></body></html>", None))
         self.aboutBackButton.setText(QCoreApplication.translate("MainMenu", u"Back to Main Menu", None))
+        self.guideTitle.setText(QCoreApplication.translate("MainMenu", u"How to Play", None))
     # retranslateUi
 
