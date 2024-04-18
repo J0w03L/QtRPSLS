@@ -559,7 +559,7 @@
               <string notr="true">padding: .5em;background: none;</string>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In RPSLS, there are 5 moves to chose from. Each move counters two and is countered by another two.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In RPSLS, there are 5 moves to choose from. Each move counters two and is countered by another two.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="scaledContents">
               <bool>false</bool>
