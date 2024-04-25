@@ -8,7 +8,7 @@ from enum import Enum
 from random import randint
 
 from .ui.ui_Game import Ui_GameWidget
-from .utils.database import GameDB
+from .utils.Database import GameDB
 
 class GameMove(Enum):
     ROCK = 1
@@ -87,17 +87,10 @@ class GameWidget(QtWidgets.QWidget):
         self.ui = Ui_GameWidget()
         self.ui.setupUi(self)
 
-        testMove1 = GameMove(3)
-        testMove2 = GameMove(4)
-
-        logger.debug(f"testMove1: {testMove1.value}")
-        logger.debug(f"testMove2: {testMove2.value}")
-        logger.debug(f"    outcome: {determineOutcome(testMove1, testMove2)}")
-
         # Ensure a fixed size window.
         self.setFixedSize(600, 600)
 
-        # Setup round stuff
+        # Setup round stuff.
         self.currentRound = 0
         self.maxRounds = 3
         self.wonRounds = [None, None, None]
@@ -154,14 +147,22 @@ class GameWidget(QtWidgets.QWidget):
         self.ui.sceneActionLabel._pixmap = QtGui.QPixmap(581, 411)
 
         actionPainter = QtGui.QPainter(self.ui.sceneActionLabel._pixmap)
+
+        # "Clear" the background of the pixmap.
         actionPainter.fillRect(QtCore.QRect(0, 0, 581, 411), QtGui.QColor(239, 239, 239))
+
+        # Setup text font/color and enable antialiasing.
         actionPainter.setFont(QtGui.QFont("Arial", 30))
         actionPainter.setPen(QtGui.QColor(0, 255, 0) if playerWon else QtGui.QColor(255, 0, 0))
         actionPainter.setRenderHint(QtGui.QPainter.Antialiasing)
+
+        # Draw the text.
         actionPainter.drawText(QtCore.QRect(0, 0, 581, 411), QtCore.Qt.AlignCenter, actionText)
 
+        # Pick a random animation direction.
         animDir = randint(1, 2)
 
+        # Create the animation.
         self.ui.sceneActionLabel._animation = QtCore.QVariantAnimation(
             self.ui.sceneActionLabel,
             loopCount = 1,
@@ -171,6 +172,7 @@ class GameWidget(QtWidgets.QWidget):
             valueChanged = self.on_sceneActionLabel_rotation_changed
         )
 
+        # Aaaand play it!
         self.ui.sceneActionLabel._animation.start()
 
     def on_sceneActionLabel_rotation_changed(self, val):

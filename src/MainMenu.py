@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 from PySide6 import QtCore, QtGui, QtWidgets, QtMultimedia
 from .ui.ui_MainMenu import Ui_MainMenu
 from .Game import GameWidget
-from .utils.database import GameDB
+from .utils.Database import GameDB
 
 class MainMenu(QtWidgets.QMainWindow):
     def __init__(self, db: GameDB, parent = None, width: int = 600, height: int = 600):

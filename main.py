@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 from PySide6.QtWidgets import QApplication
 
-from src.utils.database import GameDB
+from src.utils.Database import GameDB
 from src.MainMenu import MainMenu
 
 # Import resources such as images and audio.
