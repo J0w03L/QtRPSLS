@@ -5,9 +5,11 @@ logger = logging.getLogger(__name__)
 
 from PySide6 import QtCore, QtGui, QtWidgets, QtMultimedia
 from .ui.ui_MainMenu import Ui_MainMenu
+from .Game import GameWidget
+from .utils.database import GameDB
 
 class MainMenu(QtWidgets.QMainWindow):
-    def __init__(self, parent = None, width: int = 600, height: int = 600):
+    def __init__(self, db: GameDB, parent = None, width: int = 600, height: int = 600):
         super().__init__(parent)
 
         self.ui = Ui_MainMenu()
@@ -39,22 +41,44 @@ class MainMenu(QtWidgets.QMainWindow):
         # Ensure the window is fixed to 600x600.
         self.resize_menu(width, height)
 
-        # Hook button events.
+        # Ensure that we always start on the initial menu page.
+        self.change_menu_page(0)
+
+        """
+            Hook button events.
+
+            Lambdas are used in cases where arguments need to be passed to a function,
+            because Qt's connect function only accepts a function object for a parameter.
+        """
         self.ui.mainExitButton.clicked.connect(self.close)
         self.ui.mainAboutButton.clicked.connect(lambda _: self.change_menu_page(1))
         self.ui.mainGuideButton.clicked.connect(lambda _: self.change_menu_page(2))
+        self.ui.mainPlayButton.clicked.connect(lambda _: self.open_game_widget(db))
         self.ui.aboutBackButton.clicked.connect(lambda _: self.change_menu_page(0))
         self.ui.guideBackButton.clicked.connect(lambda _: self.change_menu_page(0))
-        #self.ui.mainGuideButton.clicked.connect(lambda _: self.play_sound(":/assets/Game/snd/rpsls.wav"))
+
+    def open_game_widget(self, db: GameDB):
+        logger.debug("Opening game widget.")
+
+        # Create and show the widget.
+        widget = GameWidget(db)
+        widget.setAttribute(QtCore.Qt.WA_DeleteOnClose)
+        logger.debug("Showing game widget.")
+        widget.show()
+
+        # Hide the main menu widget.
+        logger.debug("Hiding main menu widget.")
+        self.setVisible(False)
+
+        # Connect destroyed event so that the main menu widget re-appears when game widget is closed.
+        widget.destroyed.connect(lambda _: self.setVisible(True))
+
+        # This feels VERY hacky, but if I don't do this, the game widget never gets a chance to show up.
+        QtCore.QEventLoop().exec()
 
     def change_menu_page(self, index: int):
+        logger.debug(f"Switching to menu page {index}.")
         self.ui.widgets.setCurrentIndex(index)
-
-    def play_sound(self, path: str, vol: float = 1.0):
-        self.sound = QtMultimedia.QSoundEffect()
-        self.sound.setSource(QtCore.QUrl.fromLocalFile(path))
-        self.sound.setVolume(vol)
-        self.sound.play()
 
     def resize_menu(self, width: int, height: int):
         logger.debug(f"Resizing menu to [{width}, {height}].")

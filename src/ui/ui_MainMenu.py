@@ -33,8 +33,8 @@ class Ui_MainMenu(object):
         self.bg.setEnabled(True)
         self.bg.setGeometry(QRect(0, 0, 0, 0))
         self.bg.setStyleSheet(u"")
-        self.bg.setFrameShape(QFrame.StyledPanel)
-        self.bg.setFrameShadow(QFrame.Raised)
+        self.bg.setFrameShape(QFrame.Shape.StyledPanel)
+        self.bg.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_2 = QGridLayout(self.bg)
         self.gridLayout_2.setSpacing(0)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
@@ -44,7 +44,7 @@ class Ui_MainMenu(object):
         self.bgImg.setStyleSheet(u"")
         self.bgImg.setLineWidth(0)
         self.bgImg.setScaledContents(True)
-        self.bgImg.setAlignment(Qt.AlignCenter)
+        self.bgImg.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.bgImg, 0, 0, 1, 1)
 
@@ -52,8 +52,8 @@ class Ui_MainMenu(object):
         self.content.setObjectName(u"content")
         self.content.setGeometry(QRect(0, 0, 600, 600))
         self.content.setStyleSheet(u"background-color: rgba(128,128,128,16);")
-        self.content.setFrameShape(QFrame.StyledPanel)
-        self.content.setFrameShadow(QFrame.Raised)
+        self.content.setFrameShape(QFrame.Shape.StyledPanel)
+        self.content.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_3 = QGridLayout(self.content)
         self.gridLayout_3.setSpacing(0)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
@@ -87,7 +87,7 @@ class Ui_MainMenu(object):
         font1.setBold(True)
         self.mainTitle.setFont(font1)
         self.mainTitle.setStyleSheet(u"background:none;")
-        self.mainTitle.setAlignment(Qt.AlignCenter)
+        self.mainTitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout.addWidget(self.mainTitle)
 
@@ -174,7 +174,7 @@ class Ui_MainMenu(object):
         self.aboutTitle.setMaximumSize(QSize(600, 64))
         self.aboutTitle.setFont(font1)
         self.aboutTitle.setStyleSheet(u"padding: .5em;")
-        self.aboutTitle.setAlignment(Qt.AlignCenter)
+        self.aboutTitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_3.addWidget(self.aboutTitle)
 
@@ -193,7 +193,7 @@ class Ui_MainMenu(object):
         self.aboutInfo.setFont(font4)
         self.aboutInfo.setStyleSheet(u"padding: .5em;background: none;")
         self.aboutInfo.setScaledContents(False)
-        self.aboutInfo.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.aboutInfo.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
         self.aboutInfo.setWordWrap(True)
         self.aboutInfo.setOpenExternalLinks(True)
 
@@ -245,7 +245,7 @@ class Ui_MainMenu(object):
         self.guideTitle.setMaximumSize(QSize(600, 64))
         self.guideTitle.setFont(font1)
         self.guideTitle.setStyleSheet(u"padding: .5em;")
-        self.guideTitle.setAlignment(Qt.AlignCenter)
+        self.guideTitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_5.addWidget(self.guideTitle)
 
@@ -261,7 +261,7 @@ class Ui_MainMenu(object):
         self.aboutInfo_2.setFont(font4)
         self.aboutInfo_2.setStyleSheet(u"padding: .5em;background: none;")
         self.aboutInfo_2.setScaledContents(False)
-        self.aboutInfo_2.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.aboutInfo_2.setAlignment(Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
         self.aboutInfo_2.setWordWrap(True)
         self.aboutInfo_2.setOpenExternalLinks(True)
 
@@ -277,7 +277,7 @@ class Ui_MainMenu(object):
         self.guideRockIcon.setObjectName(u"guideRockIcon")
         self.guideRockIcon.setMinimumSize(QSize(64, 64))
         self.guideRockIcon.setMaximumSize(QSize(64, 64))
-        self.guideRockIcon.setStyleSheet(u"image: url(:/assets/Game/img/rock.svg);\n"
+        self.guideRockIcon.setStyleSheet(u"image: url(:/assets/Game/img/rock_new.svg);\n"
 "background: none")
         self.guideRockIcon.setMargin(0)
         self.guideRockIcon.setIndent(-1)
@@ -299,7 +299,7 @@ class Ui_MainMenu(object):
         self.guidePaperText.setStyleSheet(u"background: none;\n"
 "")
         self.guidePaperText.setScaledContents(False)
-        self.guidePaperText.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.guidePaperText.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.horizontalLayout.addWidget(self.guidePaperText)
 
@@ -307,7 +307,7 @@ class Ui_MainMenu(object):
         self.guidePaperIcon.setObjectName(u"guidePaperIcon")
         self.guidePaperIcon.setMinimumSize(QSize(64, 64))
         self.guidePaperIcon.setMaximumSize(QSize(64, 64))
-        self.guidePaperIcon.setStyleSheet(u"image: url(:/assets/Game/img/paper.svg);\n"
+        self.guidePaperIcon.setStyleSheet(u"image: url(:/assets/Game/img/paper_new.svg);\n"
 "background: none;")
 
         self.horizontalLayout.addWidget(self.guidePaperIcon)
@@ -325,7 +325,7 @@ class Ui_MainMenu(object):
         self.guideScissorsIcon.setObjectName(u"guideScissorsIcon")
         self.guideScissorsIcon.setMinimumSize(QSize(64, 64))
         self.guideScissorsIcon.setMaximumSize(QSize(64, 64))
-        self.guideScissorsIcon.setStyleSheet(u"image: url(:/assets/Game/img/scissors.svg);\n"
+        self.guideScissorsIcon.setStyleSheet(u"image: url(:/assets/Game/img/scissors_new.svg);\n"
 "background: none;")
         self.guideScissorsIcon.setMargin(0)
         self.guideScissorsIcon.setIndent(-1)
@@ -352,7 +352,7 @@ class Ui_MainMenu(object):
         self.guideLizardIcon.setObjectName(u"guideLizardIcon")
         self.guideLizardIcon.setMinimumSize(QSize(64, 64))
         self.guideLizardIcon.setMaximumSize(QSize(64, 64))
-        self.guideLizardIcon.setStyleSheet(u"image: url(:/assets/Game/img/lizard.svg);\n"
+        self.guideLizardIcon.setStyleSheet(u"image: url(:/assets/Game/img/lizard_new.svg);\n"
 "background: none;")
 
         self.horizontalLayout_5.addWidget(self.guideLizardIcon)
@@ -370,7 +370,7 @@ class Ui_MainMenu(object):
         self.guideSpockIcon.setObjectName(u"guideSpockIcon")
         self.guideSpockIcon.setMinimumSize(QSize(64, 64))
         self.guideSpockIcon.setMaximumSize(QSize(64, 64))
-        self.guideSpockIcon.setStyleSheet(u"image: url(:/assets/Game/img/spock.svg);\n"
+        self.guideSpockIcon.setStyleSheet(u"image: url(:/assets/Game/img/spock_new.svg);\n"
 "background: none;")
         self.guideSpockIcon.setMargin(0)
         self.guideSpockIcon.setIndent(-1)
@@ -396,7 +396,7 @@ class Ui_MainMenu(object):
         self.aboutInfo_3.setFont(font4)
         self.aboutInfo_3.setStyleSheet(u"padding: .5em;background: none;")
         self.aboutInfo_3.setScaledContents(False)
-        self.aboutInfo_3.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.aboutInfo_3.setAlignment(Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
         self.aboutInfo_3.setWordWrap(True)
         self.aboutInfo_3.setOpenExternalLinks(True)
 
@@ -458,13 +458,13 @@ class Ui_MainMenu(object):
                         "org/licenses/by-sa/3.0/deed.en\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">CC-BY-SA-3.0</span></a><span style=\" font-size:10pt;\"> by </span><a href=\"https://commons.wikimedia.org/wiki/User:DMacks\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">DMacks</span></a><span style=\" font-size:10pt;\">.</span></p><p><span style=\" font-size:10pt;\">- </span><a href=\"https://youtu.be/6s9k5rwBWB4?t=67\"><span style=\" font-size:10pt; text-decoration: underline; color:#0000ff;\">&quot;Rock Paper Scissors Lizard Spock&quot; callout audio</span></a><span style=\" font-size:10pt;\">, voice clip from &quot;The Big Bang Theory, Season 2 Episode 8: The Lizard-Spock Expansion&quot;</span></p></body></html>", None))
         self.aboutBackButton.setText(QCoreApplication.translate("MainMenu", u"Back to Main Menu", None))
         self.guideTitle.setText(QCoreApplication.translate("MainMenu", u"How to Play", None))
-        self.aboutInfo_2.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p>In RPSLS, there are 5 moves to chose from. Each move counters two and is countered by another two.</p></body></html>", None))
+        self.aboutInfo_2.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p>In RPSLS, there are 5 moves to choose from. Each move counters two and is countered by another two.</p></body></html>", None))
         self.guideRockIcon.setText("")
-        self.guideRockText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Lizard</span>.<br/><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Scissors</span>.</p><p><span style=\" font-weight:700;\">Paper</span> covers <span style=\" font-weight:700;\">Rock</span>.<br/><span style=\" font-weight:700;\">Spock</span> vaporizes <span style=\" font-weight:700;\">Rock</span>.</p></body></html>", None))
+        self.guideRockText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Lizard</span>.<br/><span style=\" font-weight:700;\">Rock</span> blunts <span style=\" font-weight:700;\">Scissors</span>.</p><p><span style=\" font-weight:700;\">Paper</span> covers <span style=\" font-weight:700;\">Rock</span>.<br/><span style=\" font-weight:700;\">Spock</span> vaporizes <span style=\" font-weight:700;\">Rock</span>.</p></body></html>", None))
         self.guidePaperText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Paper</span> covers <span style=\" font-weight:700;\">Rock</span>.<br/><span style=\" font-weight:700;\">Paper</span> disproves <span style=\" font-weight:700;\">Spock</span>.</p><p><span style=\" font-weight:700;\">Scissors</span> cuts <span style=\" font-weight:700;\">Paper</span>.<br/><span style=\" font-weight:700;\">Lizard</span> eats <span style=\" font-weight:700;\">Paper</span>.</p></body></html>", None))
         self.guidePaperIcon.setText("")
         self.guideScissorsIcon.setText("")
-        self.guideScissorsText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Scissors</span> cuts <span style=\" font-weight:700;\">Paper</span>.<br/><span style=\" font-weight:700;\">Scissors</span> decapitates <span style=\" font-weight:700;\">Lizard</span>.</p><p><span style=\" font-weight:700;\">Spock</span> smashes <span style=\" font-weight:700;\">Scissors</span>.<br/><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Scissors</span>.</p></body></html>", None))
+        self.guideScissorsText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Scissors</span> cuts <span style=\" font-weight:700;\">Paper</span>.<br/><span style=\" font-weight:700;\">Scissors</span> decapitates <span style=\" font-weight:700;\">Lizard</span>.</p><p><span style=\" font-weight:700;\">Spock</span> smashes <span style=\" font-weight:700;\">Scissors</span>.<br/><span style=\" font-weight:700;\">Rock</span> blunts <span style=\" font-weight:700;\">Scissors</span>.</p></body></html>", None))
         self.guideLizardText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Lizard</span> poisons <span style=\" font-weight:700;\">Spock</span>.<br/><span style=\" font-weight:700;\">Lizard</span> eats <span style=\" font-weight:700;\">Paper</span>.</p><p><span style=\" font-weight:700;\">Rock</span> crushes <span style=\" font-weight:700;\">Lizard</span>.<br/><span style=\" font-weight:700;\">Scissors</span> decapitates <span style=\" font-weight:700;\">Lizard</span>.</p></body></html>", None))
         self.guideLizardIcon.setText("")
         self.guideSpockIcon.setText("")

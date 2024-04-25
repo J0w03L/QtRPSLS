@@ -4,6 +4,9 @@
         "resources.qrc",
         "rc_resources.py",
         "src/MainMenu.py",
-        "src/ui/MainMenu.ui"
+        "src/ui/MainMenu.ui",
+        "src/utils/database.py",
+        "src/ui/Game.ui",
+        "src/Game.py"
     ]
 }
