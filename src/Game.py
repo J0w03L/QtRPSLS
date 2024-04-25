@@ -187,5 +187,5 @@ class GameWidget(QtWidgets.QWidget):
             self.ui.lizardButton.setEnabled(True)
             self.ui.spockButton.setEnabled(True)
 
-            # Play random comic sound effect for dramatic tension!
-            self.play_sound(f":/assets/Game/snd/comic{randint(1, 2)}.wav")
+            # Play a comic sound effect for dramatic tension!
+            self.play_sound(f":/assets/Game/snd/comic{1 if self.currentRound % 2 else 2}.wav")
