@@ -62,7 +62,7 @@ class GameMove(Enum):
         - a boolean indicating whether move1 won (or None if it tied)
         - action text for the game to display (eg. "Rock crushes Lizard")
 """
-def determineOutcome(move1: GameMove, move2: GameMove) -> tuple:
+def determine_outcome(move1: GameMove, move2: GameMove) -> tuple:
     logger.debug(f"Determining outcome for move type {move1.value} played against {move2.value}.")
 
     move1Info = move1.info()
@@ -123,7 +123,7 @@ class GameWidget(QtWidgets.QWidget):
         logger.debug(f"Player played {move1.info()['name']} against {move2.info()['name']}.")
 
         # Find out what the outcome of these moves are.
-        playerWon, actionText = determineOutcome(move1, move2)
+        playerWon, actionText = determine_outcome(move1, move2)
 
         # Record win/loss and advance round where applicable.
         match playerWon:
