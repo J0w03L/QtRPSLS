@@ -2,7 +2,6 @@
     "files": [
         "main.py",
         "resources.qrc",
-        "rc_resources.py",
         "src/MainMenu.py",
         "src/ui/MainMenu.ui",
         "src/utils/Database.py",
