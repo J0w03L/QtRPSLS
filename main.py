@@ -18,7 +18,8 @@ except ModuleNotFoundError:
             [
                 "PySide6 has not been installed; this application cannot run!",
                 "",
-                "foo"
+                "Please install the \"pyside6\" package with the below command:",
+                "    python -m pip install pyside6"
             ]
         ) + "\n"
     )
