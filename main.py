@@ -9,7 +9,20 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-from PySide6.QtWidgets import QApplication
+try:
+    from PySide6.QtWidgets import QApplication
+except ModuleNotFoundError:
+    # The user does not have PySide6 installed; let them know that they need to install it.
+    sys.stderr.write(
+        "\n".join(
+            [
+                "PySide6 has not been installed; this application cannot run!",
+                "",
+                "foo"
+            ]
+        ) + "\n"
+    )
+    sys.exit(1)
 
 from src.utils.Database import GameDB
 from src.MainMenu import MainMenu

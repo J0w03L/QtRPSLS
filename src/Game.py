@@ -18,42 +18,44 @@ class GameMove(Enum):
     SPOCK = 5
 
     def info(self) -> dict:
-        match self.value:
-            case 1: return {
+        if self.value not in range (1, 5): raise IndexError(f"Invalid GameMove of type \"{self.value}\"!")
+        return  [
+                    {
                         "name": "Rock",
                         "wins": {
                             3: "blunts",        # Rock blunts Scissors
                             4: "crushes"        # Rock crushes Lizard
                         }
-                    }
-            case 2: return {
+                    },
+                    {
                         "name": "Paper",
                         "wins": {
                             1: "covers",        # Paper covers Rock
                             5: "disproves"      # Paper disproves Spock
                         }
-                    }
-            case 3: return {
+                    },
+                    {
                         "name": "Scissors",
                         "wins": {
                             2: "cuts",          # Scissors cuts Paper
                             4: "decapitates"    # Scissors decapitates Lizard
                         }
-                    }
-            case 4: return {
+                    },
+                    {
                         "name": "Lizard",
                         "wins": {
                             2: "eats",          # Lizard eats Paper
                             5: "poisons"        # Lizard poisons Spock
                         }
-                    }
-            case 5: return {
+                    },
+                    {
                         "name": "Spock",
                         "wins": {
                             1: "vaporizes",     # Spock vaporizes Rock
                             3: "smashes"        # Spock smashes Scissors
                         }
                     }
+                ][self.value - 1]
 
 """
     Determine the outcome of two moves.
