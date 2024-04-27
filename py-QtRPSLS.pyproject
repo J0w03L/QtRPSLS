@@ -6,6 +6,7 @@
         "src/ui/MainMenu.ui",
         "src/utils/Database.py",
         "src/ui/Game.ui",
-        "src/Game.py"
+        "src/Game.py",
+        "src/tests/GameTests.py"
     ]
 }

@@ -1,9 +1,8 @@
 # This Python file uses the following encoding: utf-8
-
 import logging
 logger = logging.getLogger(__name__)
 
-from PySide6 import QtCore, QtGui, QtWidgets, QtMultimedia
+from PySide6 import QtCore, QtGui, QtWidgets
 from .ui.ui_MainMenu import Ui_MainMenu
 from .Game import GameWidget
 from .utils.Database import GameDB
