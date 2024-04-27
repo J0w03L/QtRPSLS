@@ -31,7 +31,7 @@ class TestGameMoveInit(unittest.TestCase):
 
     def test_create_invalid_game_moves(self):
         for i in [0, -1, 6, 10, 100, 0.9]:
-            self.assertRaises(ValueError, GameMove, 0)
+            self.assertRaises(ValueError, GameMove, i)
 
     def test_validate_game_move_enum_values(self):
         i = 0

@@ -17,8 +17,6 @@ class GameMove(Enum):
     SPOCK = 5
 
     def info(self) -> dict:
-        # Basically `if self.value not in range(1, 6)` except ~380% faster, due to eliminating the `range` generator overhead.
-        if not 1 <= self.value <= 5: raise ValueError(f"Invalid GameMove of type \"{self.value}\"!")
         return  [
                     {
                         "name": "Rock",
