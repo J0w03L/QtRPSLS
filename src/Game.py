@@ -92,11 +92,6 @@ class GameWidget(QtWidgets.QWidget):
         # Ensure a fixed size window.
         self.setFixedSize(600, 600)
 
-        # Setup round stuff.
-        self.currentRound = 0
-        self.maxRounds = 3
-        self.wonRounds = [None, None, None]
-
         # Disable play buttons before connecting any events.
         self.set_play_buttons_enabled(False)
 
@@ -111,8 +106,25 @@ class GameWidget(QtWidgets.QWidget):
         self.ui.userList.currentRowChanged.connect(self.select_user)
         self.ui.userPlayButton.clicked.connect(self.start_game)
 
+        # Hook replay menu buttons.
+        self.ui.playAgainYesButton.clicked.connect(self.start_game)
+        self.ui.playAgainNoButton.clicked.connect(self.close)
+
         # Show the user selection menu.
         self.show_user_select()
+
+    def setup_round(self):
+        # Reset round variables.
+        self.currentRound = 0
+        self.maxRounds = 3
+        self.wonRounds = [None, None, None]
+
+        # Reset score label text and color.
+        self.ui.scoreLabel.setText("You are tied with 0 to 0.")
+        self.ui.scoreLabel.setStyleSheet("color:#000;")
+
+        # Reset outcome label pixmap.
+        self.ui.sceneActionLabel.clear()
 
     def show_replay_menu(self):
         # Disable game's play buttons.
@@ -190,6 +202,9 @@ class GameWidget(QtWidgets.QWidget):
         # Create new game session in database.
         self.session = self.db.create_game(self.selectedUser[0])
 
+        # Reset round variables.
+        self.setup_round()
+
         # Re-enable play buttons.
         self.set_play_buttons_enabled(True)
 
@@ -232,6 +247,25 @@ class GameWidget(QtWidgets.QWidget):
             case None:
                 # Player tied. Don't advance the round or record a win/loss.
                 logger.debug("Player tied.")
+
+        # Get win/loss count so far.
+        wins    = self.wonRounds.count(True)
+        losses  = self.wonRounds.count(False)
+
+
+        # Update score label text.
+        self.ui.scoreLabel.setText(
+            f"You are tied with {wins} to {losses}." if wins == losses else
+            f"You are winning with {wins} to {losses}." if wins > losses else
+            f"You are losing with {losses} to {wins}."
+        )
+
+        # Update score label color.
+        self.ui.scoreLabel.setStyleSheet(
+            "color:#000;" if wins == losses else
+            "color:#0f0;" if wins > losses else
+            "color:#f00;"
+        )
 
         # Create a pixmap that we can animate. We'll render the actionText to this with a QPainter.
         self.ui.sceneActionLabel._pixmap = QtGui.QPixmap(581, 411)

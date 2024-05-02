@@ -17,7 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QHBoxLayout,
     QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QPushButton, QSizePolicy, QStackedWidget, QWidget)
+    QPushButton, QSizePolicy, QStackedWidget, QVBoxLayout,
+    QWidget)
 import rc_resources
 
 class Ui_GameWidget(object):
@@ -107,6 +108,30 @@ class Ui_GameWidget(object):
         self.sceneWidgets.addWidget(self.playingWidget)
         self.replayWidget = QWidget()
         self.replayWidget.setObjectName(u"replayWidget")
+        self.replayWidget.setStyleSheet(u"background-color:rgba(128,128,128,32);")
+        self.playAgainLabel = QLabel(self.replayWidget)
+        self.playAgainLabel.setObjectName(u"playAgainLabel")
+        self.playAgainLabel.setGeometry(QRect(10, 10, 561, 61))
+        self.playAgainLabel.setFont(font)
+        self.playAgainLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.verticalLayoutWidget = QWidget(self.replayWidget)
+        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
+        self.verticalLayoutWidget.setGeometry(QRect(120, 180, 331, 80))
+        self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.playAgainYesButton = QPushButton(self.verticalLayoutWidget)
+        self.playAgainYesButton.setObjectName(u"playAgainYesButton")
+        self.playAgainYesButton.setFont(font3)
+
+        self.verticalLayout.addWidget(self.playAgainYesButton)
+
+        self.playAgainNoButton = QPushButton(self.verticalLayoutWidget)
+        self.playAgainNoButton.setObjectName(u"playAgainNoButton")
+        self.playAgainNoButton.setFont(font3)
+
+        self.verticalLayout.addWidget(self.playAgainNoButton)
+
         self.sceneWidgets.addWidget(self.replayWidget)
         self.hud = QFrame(GameWidget)
         self.hud.setObjectName(u"hud")
@@ -194,7 +219,7 @@ class Ui_GameWidget(object):
 
         self.retranslateUi(GameWidget)
 
-        self.sceneWidgets.setCurrentIndex(1)
+        self.sceneWidgets.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(GameWidget)
@@ -207,6 +232,9 @@ class Ui_GameWidget(object):
         self.newUserNameField.setPlaceholderText(QCoreApplication.translate("GameWidget", u"John Doe", None))
         self.userPlayButton.setText(QCoreApplication.translate("GameWidget", u"Play", None))
         self.sceneActionLabel.setText("")
+        self.playAgainLabel.setText(QCoreApplication.translate("GameWidget", u"Play Again?", None))
+        self.playAgainYesButton.setText(QCoreApplication.translate("GameWidget", u"Yes", None))
+        self.playAgainNoButton.setText(QCoreApplication.translate("GameWidget", u"No", None))
 #if QT_CONFIG(tooltip)
         self.rockButton.setToolTip(QCoreApplication.translate("GameWidget", u"Play Rock", None))
 #endif // QT_CONFIG(tooltip)
@@ -245,6 +273,6 @@ class Ui_GameWidget(object):
         self.spockButton.setToolTip(QCoreApplication.translate("GameWidget", u"Play Spock", None))
 #endif // QT_CONFIG(tooltip)
         self.spockButton.setText("")
-        self.scoreLabel.setText(QCoreApplication.translate("GameWidget", u"You are tied at 0 v 0.", None))
+        self.scoreLabel.setText(QCoreApplication.translate("GameWidget", u"You are tied with 0 to 0.", None))
     # retranslateUi
 
