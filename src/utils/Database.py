@@ -72,7 +72,8 @@ class GameDB:
             """
             CREATE TABLE `users` (
                 `id`        INTEGER PRIMARY KEY AUTOINCREMENT,
-                `name`      TEXT NOT NULL
+                `name`      TEXT NOT NULL,
+                UNIQUE (`name` COLLATE NOCASE)
             );
             """
         )
@@ -91,8 +92,7 @@ class GameDB:
         )
 
         # We can speed up database queries by creating indexes for the columns we'll be querying.
-        # Unique indexes double up as constraints, and are used to prevent certain rows having duplicate values.
-        cur.execute("CREATE UNIQUE INDEX `uidx_users_name` ON `users` (`name`);")
+        cur.execute("CREATE INDEX `idx_users_name` ON `users` (`name`);")
         cur.execute("CREATE INDEX `idx_games_user` ON `games` (`user`);")
 
         # Save changes.
