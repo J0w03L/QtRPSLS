@@ -32,10 +32,14 @@ class GameDB:
 
         # Get database version.
         cur = self.con.cursor()
-        foundVer = cur.execute("SELECT `version` FROM `meta`").fetchone()[0]
+        foundVer = cur.execute("SELECT `version`, `created_version` FROM `meta`").fetchone()
+
+        self.currentVersion = foundVer[0]
+        self.createdVersion = foundVer[1]
 
         logger.debug(f"Game's DB_VERSION: {DB_VERSION}")
-        logger.debug(f"Found  DB_VERSION: {foundVer}")
+        logger.debug(f"Found  DB_VERSION: {self.currentVersion}")
+        logger.debug(f"     Created with: {self.createdVersion}")
 
         # Cleanup after ourselves.
         cur.close()
@@ -52,15 +56,16 @@ class GameDB:
         cur.execute(
             """
             CREATE TABLE `meta` (
-                `version`   INTEGER NOT NULL,
-                `created`   INTEGER NOT NULL DEFAULT (unixepoch())
+                `version`           INTEGER NOT NULL,
+                `created_version`   INTEGER NOT NULL,
+                `created`           INTEGER NOT NULL DEFAULT (unixepoch())
             );
             """
         )
 
         cur.execute(
-            "INSERT INTO `meta` (`version`) VALUES (?);",
-            [DB_VERSION]
+            "INSERT INTO `meta` (`version`, `created_version`) VALUES (?, ?);",
+            [DB_VERSION, DB_VERSION]
         )
 
         cur.execute(
@@ -84,6 +89,11 @@ class GameDB:
             );
             """
         )
+
+        # We can speed up database queries by creating indexes for the columns we'll be querying.
+        # Unique indexes double up as constraints, and are used to prevent certain rows having duplicate values.
+        cur.execute("CREATE UNIQUE INDEX `uidx_users_name` ON `users` (`name`);")
+        cur.execute("CREATE INDEX `idx_games_user` ON `games` (`user`);")
 
         # Save changes.
         logger.debug("Committing changes.")
