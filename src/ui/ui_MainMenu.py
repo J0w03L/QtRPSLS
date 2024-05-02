@@ -431,13 +431,16 @@ class Ui_MainMenu(object):
         self.verticalLayout_5.addLayout(self.verticalLayout_6)
 
         self.widgets.addWidget(self.guideWidget)
+        self.scoresWidget = QWidget()
+        self.scoresWidget.setObjectName(u"scoresWidget")
+        self.widgets.addWidget(self.scoresWidget)
 
         self.gridLayout_3.addWidget(self.widgets, 0, 0, 1, 1)
 
 
         self.retranslateUi(MainMenu)
 
-        self.widgets.setCurrentIndex(2)
+        self.widgets.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainMenu)

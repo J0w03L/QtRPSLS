@@ -84,6 +84,8 @@ class GameWidget(QtWidgets.QWidget):
 
         super().__init__()
 
+        self.db = db
+
         self.ui = Ui_GameWidget()
         self.ui.setupUi(self)
 
@@ -95,12 +97,104 @@ class GameWidget(QtWidgets.QWidget):
         self.maxRounds = 3
         self.wonRounds = [None, None, None]
 
-        # Hook buttons.
+        # Disable play buttons before connecting any events.
+        self.set_play_buttons_enabled(False)
+
+        # Hook game's play buttons.
         self.ui.rockButton.clicked.connect(lambda _: self.play_move(1))
         self.ui.paperButton.clicked.connect(lambda _: self.play_move(2))
         self.ui.scissorsButton.clicked.connect(lambda _: self.play_move(3))
         self.ui.lizardButton.clicked.connect(lambda _: self.play_move(4))
         self.ui.spockButton.clicked.connect(lambda _: self.play_move(5))
+
+        # Hook user selection menu objects.
+        self.ui.userList.currentRowChanged.connect(self.select_user)
+        self.ui.userPlayButton.clicked.connect(self.start_game)
+
+        # Show the user selection menu.
+        self.show_user_select()
+
+    def show_replay_menu(self):
+        # Disable game's play buttons.
+        self.set_play_buttons_enabled(False)
+
+        self.ui.sceneWidgets.setCurrentIndex(2)
+
+    def show_user_select(self):
+        # Disable game's play buttons.
+        self.set_play_buttons_enabled(False)
+
+        # Refresh the user list.
+        self.refresh_user_list()
+
+        # Switch to the user page.
+        self.ui.sceneWidgets.setCurrentIndex(0)
+
+    def refresh_user_list(self):
+        logger.debug("Refreshing user list.")
+
+        # Disable new user name field and play button.
+        self.ui.newUserNameField.setEnabled(False)
+        self.ui.userPlayButton.setEnabled(False)
+
+        # Clear any existing users from the user list.
+        self.ui.userList.clear()
+        self.selectedUser = None
+
+        # Find existing users from the database.
+        self.users = self.db.get_users()
+
+        # Add them all to the userList.
+        for userID, userName in self.users:
+            self.ui.userList.addItem(userName)
+
+        # Add an additional item for creating a new user.
+        self.ui.userList.addItem("Add a new user")
+
+    def select_user(self, new: int):
+        # If new is -1, selection was cleared.
+        if new == -1:
+            logger.debug("User selection was cleared.")
+
+            self.selectedUser = None
+            self.ui.newUserNameField.setEnabled(False)
+            self.ui.userPlayButton.setEnabled(False)
+            return
+
+        # If the last item was selected, it must be the "Create new user" item.
+        if new == self.ui.userList.count() - 1 and self.ui.userList.count() != 0:
+            logger.debug("\"Create new user\" item was selected.")
+
+            self.selectedUser = -1
+            self.ui.newUserNameField.setEnabled(True)
+            self.ui.userPlayButton.setEnabled(True)
+            return
+
+        logger.debug(f"Selected user {new} (id: {self.users[new][0]}; name: \"{self.users[new][1]}\")")
+
+        self.selectedUser = self.users[new]
+        self.ui.newUserNameField.setEnabled(False)
+        self.ui.userPlayButton.setEnabled(True)
+        return
+
+    def start_game(self):
+        # Check if we need to create a new user.
+        if self.selectedUser == -1:
+            # Make sure the user actually entered a name. If they didn't, don't let them continue.
+            if self.ui.newUserNameField.text().strip() == "":
+                logger.debug("TODO: show error message; no new user name was given.")
+                return
+
+            self.selectedUser = self.db.create_user(self.ui.newUserNameField.text().strip())
+
+        # Create new game session in database.
+        self.session = self.db.create_game(self.selectedUser[0])
+
+        # Re-enable play buttons.
+        self.set_play_buttons_enabled(True)
+
+        # Switch to the main page.
+        self.ui.sceneWidgets.setCurrentIndex(1)
 
     def play_sound(self, path: str, vol: float = 1.0):
         self.sound = QtMultimedia.QSoundEffect()
@@ -110,11 +204,7 @@ class GameWidget(QtWidgets.QWidget):
 
     def play_move(self, moveType: int):
         # Disable move buttons temporarily.
-        self.ui.rockButton.setEnabled(False)
-        self.ui.paperButton.setEnabled(False)
-        self.ui.scissorsButton.setEnabled(False)
-        self.ui.lizardButton.setEnabled(False)
-        self.ui.spockButton.setEnabled(False)
+        self.set_play_buttons_enabled(False)
 
         # Create moves; 2nd one is pseudo-randomly generated.
         move1 = GameMove(moveType)
@@ -175,6 +265,13 @@ class GameWidget(QtWidgets.QWidget):
         # Aaaand play it!
         self.ui.sceneActionLabel._animation.start()
 
+    def set_play_buttons_enabled(self, val: bool):
+        self.ui.rockButton.setEnabled(val)
+        self.ui.paperButton.setEnabled(val)
+        self.ui.scissorsButton.setEnabled(val)
+        self.ui.lizardButton.setEnabled(val)
+        self.ui.spockButton.setEnabled(val)
+
     def on_sceneActionLabel_rotation_changed(self, val):
         trans = QtGui.QTransform()
         trans.rotate(val)
@@ -183,11 +280,18 @@ class GameWidget(QtWidgets.QWidget):
         if self.ui.sceneActionLabel._animation.endValue() == val:
             # Animation finished; re-enable buttons.
             logger.debug("anim finished")
-            self.ui.rockButton.setEnabled(True)
-            self.ui.paperButton.setEnabled(True)
-            self.ui.scissorsButton.setEnabled(True)
-            self.ui.lizardButton.setEnabled(True)
-            self.ui.spockButton.setEnabled(True)
+            self.set_play_buttons_enabled(True)
 
             # Play a comic sound effect for dramatic tension!
             self.play_sound(f":/assets/Game/snd/comic{1 if self.currentRound % 2 else 2}.wav")
+
+            # Check if the game is over.
+            if self.currentRound == 3:
+                won = self.wonRounds.count(True) > self.wonRounds.count(False)
+
+                # Save the outcome of this game to the database.
+                logger.debug(f"Game is over; saving game (won = {won}).")
+                self.db.finish_game(self.session, won)
+
+                # Switch to replay widget.
+                self.show_replay_menu()

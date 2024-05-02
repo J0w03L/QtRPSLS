@@ -27,6 +27,10 @@ class GameDB:
         logger.debug(f"Creating connection at \"{path}\"")
         self.con = sqlite3.connect(path)
 
+        # Ensure foreign keys are enabled; they are disabled by default in SQLite.
+        # See https://www.sqlite.org/foreignkeys.html#fk_enable
+        self.con.execute("PRAGMA foreign_keys = ON;")
+
         # Make sure we setup the database tables if we need to.
         if dbNeedsSetup: self.setup_db()
 
@@ -103,3 +107,57 @@ class GameDB:
         cur.close()
 
         logger.debug("Database setup complete!")
+        return
+
+    def get_users(self) -> list:
+        logger.debug("Getting users.")
+
+        cur = self.con.cursor()
+        cur.execute("SELECT `id`, `name` FROM `users`;")
+
+        # Create a list of tuples: (user id, user name)
+        ret = [(user[0], user[1]) for user in cur.fetchall()]
+
+        cur.close()
+        return ret
+
+    def create_user(self, name: str) -> tuple:
+        logger.debug(f"Creating new user \"{name}\".")
+
+        cur = self.con.cursor()
+        cur.execute(
+            "INSERT INTO `users` (`name`) VALUES (?);",
+            [name]
+        )
+        self.con.commit()
+        newID = cur.lastrowid
+
+        cur.close()
+        return (newID, name)
+
+    def create_game(self, user: int) -> int:
+        logger.debug(f"Creating game with user ID {user}.")
+
+        cur = self.con.cursor()
+        cur.execute(
+            "INSERT INTO `games` (`user`) VALUES (?);",
+            [user]
+        )
+        self.con.commit()
+        newID = cur.lastrowid
+
+        cur.close()
+        return newID
+
+    def finish_game(self, game: int, won: bool):
+        logger.debug(f"Finishing game (won = {won}).")
+
+        cur = self.con.cursor()
+        cur.execute(
+            "UPDATE `games` SET `end` = unixepoch(), `won` = ? WHERE `id` = ?;",
+            [int(won), game]
+        )
+        self.con.commit()
+
+        cur.close()
+        return

@@ -40,7 +40,7 @@
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
-   <widget class="QLabel" name="sceneActionLabel">
+   <widget class="QStackedWidget" name="sceneWidgets">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -49,15 +49,168 @@
       <height>411</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+    <property name="currentIndex">
+     <number>1</number>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
+    <widget class="QWidget" name="userWidget">
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(128,128,128,32);</string>
+     </property>
+     <widget class="QLabel" name="whoIsPlayingLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>561</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>26</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Who is playing?</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QFrame" name="newUserFrame">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>290</y>
+        <width>561</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QWidget" name="formLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>541</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="newUserNameFieldLabel">
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Your user name is:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="newUserNameField">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="maxLength">
+           <number>100</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+          <property name="placeholderText">
+           <string>John Doe</string>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="userPlayButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>360</y>
+        <width>541</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Play</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="userList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>561</width>
+        <height>201</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="playingWidget">
+     <widget class="QLabel" name="sceneActionLabel">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>581</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="replayWidget"/>
    </widget>
   </widget>
   <widget class="QFrame" name="hud">
@@ -247,6 +400,28 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="scoreLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>100</y>
+      <width>581</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>You are tied at 0 v 0.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
    </widget>
   </widget>
  </widget>

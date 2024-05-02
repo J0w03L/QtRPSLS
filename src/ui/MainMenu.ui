@@ -117,7 +117,7 @@
        <string notr="true">padding:.1em;</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainWidget">
        <widget class="QWidget" name="verticalLayoutWidget">
@@ -960,6 +960,7 @@ background: none;</string>
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="scoresWidget"/>
      </widget>
     </item>
    </layout>
