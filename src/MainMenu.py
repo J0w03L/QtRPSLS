@@ -11,6 +11,8 @@ class MainMenu(QtWidgets.QMainWindow):
     def __init__(self, db: GameDB, parent = None, width: int = 600, height: int = 600):
         super().__init__(parent)
 
+        self.db = db
+
         self.ui = Ui_MainMenu()
         self.ui.setupUi(self)
 
@@ -52,9 +54,11 @@ class MainMenu(QtWidgets.QMainWindow):
         self.ui.mainExitButton.clicked.connect(self.close)
         self.ui.mainAboutButton.clicked.connect(lambda _: self.change_menu_page(1))
         self.ui.mainGuideButton.clicked.connect(lambda _: self.change_menu_page(2))
+        self.ui.mainHighScoresButton.clicked.connect(lambda _: self.change_menu_page(3))
         self.ui.mainPlayButton.clicked.connect(lambda _: self.open_game_widget(db))
         self.ui.aboutBackButton.clicked.connect(lambda _: self.change_menu_page(0))
         self.ui.guideBackButton.clicked.connect(lambda _: self.change_menu_page(0))
+        self.ui.scoresBackButton.clicked.connect(lambda _: self.change_menu_page(0))
 
     def open_game_widget(self, db: GameDB):
         logger.debug("Opening game widget.")
@@ -77,6 +81,10 @@ class MainMenu(QtWidgets.QMainWindow):
 
     def change_menu_page(self, index: int):
         logger.debug(f"Switching to menu page {index}.")
+
+        # If we're switching to the scoreboard page, refresh it first.
+        if index == 3: self.refresh_scoreboard()
+
         self.ui.widgets.setCurrentIndex(index)
 
     def resize_menu(self, width: int, height: int):
@@ -90,6 +98,27 @@ class MainMenu(QtWidgets.QMainWindow):
 
         # Update content frame size
         self.ui.content.resize(width, height)
+
+    def refresh_scoreboard(self):
+        # Get the latest scores.
+        scores = self.db.get_scores()
+
+        # Reset the scoreboard table.
+        self.ui.scoresTable.clear()
+        self.ui.scoresTable.setRowCount(len(scores))
+        self.ui.scoresTable.setColumnCount(4)
+
+        # Setup the table headers.
+        self.ui.scoresTable.setHorizontalHeaderLabels(["Name", "Wins", "Losses", "Score"])
+
+        # Add the scores we grabbed to the scoreboard table.
+        currentItemIndex = 0
+        for name, wins, losses, score in scores:
+            self.ui.scoresTable.setItem(currentItemIndex, 0, QtWidgets.QTableWidgetItem(name))
+            self.ui.scoresTable.setItem(currentItemIndex, 1, QtWidgets.QTableWidgetItem(str(wins)))
+            self.ui.scoresTable.setItem(currentItemIndex, 2, QtWidgets.QTableWidgetItem(str(losses)))
+            self.ui.scoresTable.setItem(currentItemIndex, 3, QtWidgets.QTableWidgetItem(str(score)))
+            currentItemIndex += 1
 
     def on_rotation_changed(self, val):
         trans = QtGui.QTransform()

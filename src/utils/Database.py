@@ -161,3 +161,36 @@ class GameDB:
 
         cur.close()
         return
+
+    def get_scores(self) -> list:
+        logger.debug("Getting scores.")
+
+        ret = []
+        cur = self.con.cursor()
+        cur.execute(
+            """
+            SELECT `name`, `wins`, `losses`, `wins` - `losses` AS `score` FROM (
+                SELECT
+                    `users`.`name`,
+                    SUM(
+                        CASE
+                            WHEN `games`.`won` = 1 THEN 1 ELSE 0
+                        END
+                    ) AS `wins`,
+                    SUM(
+                        CASE
+                            WHEN `games`.`won` = 0 THEN 1 ELSE 0
+                        END
+                    ) AS `losses`
+                FROM `games`
+                INNER JOIN `users` ON `users`.`id` = `games`.`user`
+                GROUP BY `games`.`user`
+            ) ORDER BY `score` DESC;
+            """
+        )
+
+        for name, wins, losses, score in cur.fetchall():
+            ret.append((name, wins, losses, score))
+
+        cur.close()
+        return ret

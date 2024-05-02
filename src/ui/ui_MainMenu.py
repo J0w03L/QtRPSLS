@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QGridLayout,
+    QHBoxLayout, QHeaderView, QLabel, QPushButton,
+    QSizePolicy, QSpacerItem, QStackedWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_MainMenu(object):
     def setupUi(self, MainMenu):
@@ -433,6 +434,71 @@ class Ui_MainMenu(object):
         self.widgets.addWidget(self.guideWidget)
         self.scoresWidget = QWidget()
         self.scoresWidget.setObjectName(u"scoresWidget")
+        self.scoresTitle = QLabel(self.scoresWidget)
+        self.scoresTitle.setObjectName(u"scoresTitle")
+        self.scoresTitle.setGeometry(QRect(0, 0, 599, 54))
+        self.scoresTitle.setMaximumSize(QSize(600, 64))
+        font6 = QFont()
+        font6.setFamilies([u"Arial"])
+        font6.setPointSize(24)
+        font6.setBold(True)
+        font6.setItalic(False)
+        self.scoresTitle.setFont(font6)
+        self.scoresTitle.setStyleSheet(u"padding: .5em;")
+        self.scoresTitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.scoresTable = QTableWidget(self.scoresWidget)
+        if (self.scoresTable.columnCount() < 4):
+            self.scoresTable.setColumnCount(4)
+        self.scoresTable.setObjectName(u"scoresTable")
+        self.scoresTable.setGeometry(QRect(10, 60, 571, 451))
+        self.scoresTable.setStyleSheet(u"QTableWidget::item {\n"
+"	background-color: #fff;\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"	background-color:#f00;\n"
+"}")
+        self.scoresTable.setAutoScroll(False)
+        self.scoresTable.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.scoresTable.setProperty("showDropIndicator", False)
+        self.scoresTable.setAlternatingRowColors(False)
+        self.scoresTable.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection)
+        self.scoresTable.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.scoresTable.setSortingEnabled(True)
+        self.scoresTable.setCornerButtonEnabled(True)
+        self.scoresTable.setRowCount(0)
+        self.scoresTable.setColumnCount(4)
+        self.scoresTable.horizontalHeader().setCascadingSectionResizes(True)
+        self.scoresTable.horizontalHeader().setHighlightSections(True)
+        self.scoresTable.horizontalHeader().setProperty("showSortIndicator", True)
+        self.scoresTable.horizontalHeader().setStretchLastSection(True)
+        self.scoresTable.verticalHeader().setVisible(True)
+        self.scoresTable.verticalHeader().setCascadingSectionResizes(True)
+        self.scoresTable.verticalHeader().setHighlightSections(True)
+        self.scoresTable.verticalHeader().setStretchLastSection(False)
+        self.layoutWidget = QWidget(self.scoresWidget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(0, 520, 601, 71))
+        self.horizontalLayout_7 = QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_13)
+
+        self.scoresBackButton = QPushButton(self.layoutWidget)
+        self.scoresBackButton.setObjectName(u"scoresBackButton")
+        self.scoresBackButton.setMinimumSize(QSize(320, 0))
+        self.scoresBackButton.setFont(font5)
+        self.scoresBackButton.setStyleSheet(u"margin-bottom: 1.5em;\n"
+"margin-top: 6px;")
+
+        self.horizontalLayout_7.addWidget(self.scoresBackButton)
+
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_14)
+
         self.widgets.addWidget(self.scoresWidget)
 
         self.gridLayout_3.addWidget(self.widgets, 0, 0, 1, 1)
@@ -440,7 +506,7 @@ class Ui_MainMenu(object):
 
         self.retranslateUi(MainMenu)
 
-        self.widgets.setCurrentIndex(0)
+        self.widgets.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainMenu)
@@ -474,5 +540,7 @@ class Ui_MainMenu(object):
         self.guideSpockText.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p><span style=\" font-weight:700;\">Spock</span> smashes <span style=\" font-weight:700;\">Scissors</span>.<br/><span style=\" font-weight:700;\">Spock</span> vaporizes <span style=\" font-weight:700;\">Rock</span>.</p><p><span style=\" font-weight:700;\">Lizard</span> poisons <span style=\" font-weight:700;\">Spock</span>.<br/><span style=\" font-weight:700;\">Paper</span> disproves <span style=\" font-weight:700;\">Spock</span>.</p></body></html>", None))
         self.aboutInfo_3.setText(QCoreApplication.translate("MainMenu", u"<html><head/><body><p>And as you might have guessed, two identical moves are a tie.</p><p>The winner is determined from a best-of-3 rounds (not including ties).</p></body></html>", None))
         self.guideBackButton.setText(QCoreApplication.translate("MainMenu", u"Back to Main Menu", None))
+        self.scoresTitle.setText(QCoreApplication.translate("MainMenu", u"Highscores", None))
+        self.scoresBackButton.setText(QCoreApplication.translate("MainMenu", u"Back to Main Menu", None))
     # retranslateUi
 
