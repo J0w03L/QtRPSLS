@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 try:
     from PySide6.QtWidgets import QApplication
+    from PySide6.QtGui import QPalette, QColor
 except ModuleNotFoundError:
     # The user does not have PySide6 installed; let them know that they need to install it.
     # We don't use logger for this; logger is primarily for debugging purposes.
@@ -58,6 +59,34 @@ if __name__ == "__main__":
 
     # Explicit application styling so that colors are consistent cross-platform.
     app.setStyle("fusion")
+
+    # Force the palette to be the same on all platforms, regardless of system theme.
+    # This isn't entirely ideal, but I'm too crunched for time on this to make everything
+    # look fine across different themes.
+    palette = QPalette(
+        windowText      = QColor(0, 0, 0, 255),
+        button          = QColor(239, 239, 239, 255),
+        light           = QColor(255, 255, 255, 255),
+        midlight        = QColor(202, 202, 202, 255),
+        dark            = QColor(159, 159, 159, 255),
+        mid             = QColor(184, 184, 184, 255),
+        text            = QColor(0, 0, 0, 255),
+        bright_text     = QColor(255, 255, 255, 255),
+        buttonText      = QColor(0, 0, 0, 255),
+        base            = QColor(255, 255, 255, 255),
+        window          = QColor(239, 239, 239, 255),
+        shadow          = QColor(118, 118, 118, 255),
+        highlight       = QColor(48, 140, 198, 255),
+        highlightedText = QColor(255, 255, 255, 255),
+        link            = QColor(0, 0, 255, 255),
+        linkVisited     = QColor(255, 0, 255, 255),
+        alternateBase   = QColor(247, 247, 247, 255),
+        tooltipBase     = QColor(255, 255, 220, 255),
+        tooltipText     = QColor(0, 0, 0, 255),
+        placeholderText = QColor(0, 0, 0, 128),
+        accent          = QColor(48, 140, 198, 255),
+    )
+    app.setPalette(palette)
 
     widget = MainMenu(db)
     widget.show()
