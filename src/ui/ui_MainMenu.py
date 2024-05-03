@@ -506,7 +506,7 @@ class Ui_MainMenu(object):
 
         self.retranslateUi(MainMenu)
 
-        self.widgets.setCurrentIndex(3)
+        self.widgets.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainMenu)

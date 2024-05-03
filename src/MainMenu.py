@@ -63,18 +63,31 @@ class MainMenu(QtWidgets.QMainWindow):
     def open_game_widget(self, db: GameDB):
         logger.debug("Opening game widget.")
 
+        # Save the current position of the main menu window.
+        self.newX, self.newY = (self.geometry().x(), self.geometry().y())
+        logger.debug(f"newX: {self.newX}, newY: {self.newY}")
+
         # Create and show the widget.
         widget = GameWidget(db)
         widget.setAttribute(QtCore.Qt.WA_DeleteOnClose)
         logger.debug("Showing game widget.")
         widget.show()
 
+        # Move it to the same position as the main menu.
+        widget.setGeometry(self.geometry().x(), self.geometry().y(), 600, 600)
+
+        # Conversely, track any position changes to this new game widget.
+        widget.moveEvent = lambda _: self.on_game_widget_moved(widget)
+
         # Hide the main menu widget.
         logger.debug("Hiding main menu widget.")
         self.setVisible(False)
 
         # Connect destroyed event so that the main menu widget re-appears when game widget is closed.
-        widget.destroyed.connect(lambda _: self.setVisible(True))
+        widget.destroyed.connect(self.on_game_widget_destroyed)
+
+        logger.debug(f"cur pos: ({self.geometry().x()}, {self.geometry().y()})")
+        logger.debug(f"sav pos: ({self.newX}, {self.newY})")
 
         # This feels VERY hacky, but if I don't do this, the game widget never gets a chance to show up.
         QtCore.QEventLoop().exec()
@@ -124,3 +137,12 @@ class MainMenu(QtWidgets.QMainWindow):
         trans = QtGui.QTransform()
         trans.rotate(val)
         self.ui.bgImg.setPixmap(self.ui.bgImg._pixmap.transformed(trans))
+
+    def on_game_widget_moved(self, widget):
+        self.newX, self.newY = (widget.geometry().x(), widget.geometry().y())
+
+    def on_game_widget_destroyed(self):
+        #self.setGeometry(128, 0, 600, 600)
+        self.setVisible(True)
+        logger.debug(f"Moving main menu to ({self.newX}, {self.newY})")
+        self.setGeometry(self.newX, self.newY, 600, 600)
