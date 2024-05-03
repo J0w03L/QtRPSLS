@@ -142,7 +142,22 @@ class MainMenu(QtWidgets.QMainWindow):
         self.newX, self.newY = (widget.geometry().x(), widget.geometry().y())
 
     def on_game_widget_destroyed(self):
-        #self.setGeometry(128, 0, 600, 600)
+        """
+            Fix for weird X11 behaviour on some Linux systems.
+
+            For some reason, the main menu's position has to be modified BEFORE making the window visible again,
+            otherwise the main menu will be offset in some cases. The exact behaviour is not consistent across
+            desktop environments and window managers, but this seems to fix the bug universally at least.
+
+            I'm not really sure why this happens, nor why this fixes the issue. Changing the position of an
+            invisible window doesn't actually seem to move it at all; it will reappear in it's original position
+            once it is made visible again. For that reason, you could set the position to literally anything and
+            it will still fix the bug.
+
+            This bug does not seem to exist on Windows. Haven't tested Linux with Wayland yet.
+        """
+        self.setGeometry(0, 0, 600, 600)
+
         self.setVisible(True)
         logger.debug(f"Moving main menu to ({self.newX}, {self.newY})")
         self.setGeometry(self.newX, self.newY, 600, 600)
