@@ -125,12 +125,19 @@ class GameDB:
         logger.debug(f"Creating new user \"{name}\".")
 
         cur = self.con.cursor()
-        cur.execute(
-            "INSERT INTO `users` (`name`) VALUES (?);",
-            [name]
-        )
-        self.con.commit()
-        newID = cur.lastrowid
+        try:
+            cur.execute(
+                "INSERT INTO `users` (`name`) VALUES (?);",
+                [name]
+            )
+            self.con.commit()
+            newID = cur.lastrowid
+        except sqlite3.IntegrityError:
+            cur.execute(
+                "SELECT `id` FROM `users` WHERE `name` = ?;",
+                [name]
+            )
+            newID = cur.fetchone()[0]
 
         cur.close()
         return (newID, name)
